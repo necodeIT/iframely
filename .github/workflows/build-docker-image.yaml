@@ -16,7 +16,11 @@ jobs:
             username: ${{ github.actor }}
             password: ${{ secrets.GITHUB_TOKEN }}
 
+        - name: Set docker tag
+          run: echo "DOCKER_TAG=$(echo ${{ github.repository }} | tr '[:upper:]' '[:lower:]')" >> $GITHUB_ENV
+
         - name: Build and push Docker images
           uses: docker/build-push-action@v6.7.0
           with:
             dockerfile: Dockerfile
+            tags: ghcr.io/${{ env.DOCKER_TAG }}/iframely:latest
