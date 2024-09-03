@@ -24,4 +24,4 @@ jobs:
           with:
             dockerfile: Dockerfile
             push: true
-            tags: ghcr.io/${{ env.DOCKER_TAG }}/iframely:latest
+            tags: ghcr.io/${{ env.DOCKER_TAG }}:latest
